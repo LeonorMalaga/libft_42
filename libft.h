@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/09 18:24:51 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/10 09:17:23 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,5 @@
 # include <fcntl.h>
 
 /*Mandatory functions*/
-int ft_isalpha(int c);
-
-
+int	ft_isalpha(int c);
 #endif
