@@ -6,12 +6,12 @@
 #    By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/09 18:27:08 by leonmart          #+#    #+#              #
-#    Updated: 2024/04/10 16:42:40 by leonmart         ###   ########.fr        #
+#    Updated: 2024/04/10 17:23:16 by leonmart         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
-	ft_strlen.c
+	ft_strlen.c ft_memset.c
 NAME = libft.a
 CFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:%.c=%.o)
