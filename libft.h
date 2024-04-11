@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/11 13:39:25 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:03:03 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 /*Mandatory functions*/
 /**
- * @brief  The ft_isalpha() function return 1 if the given character is a letter no 
- * matter if is upper o lower case.
+ * @brief  The ft_isalpha() function return 1 if the given character is
+ * a letter no matter if is upper o lower case.
  * 
  * @param c int (the ascci value of the character)
  * @return ** int -> 0 false, 1 true (is a letter)
@@ -33,11 +33,12 @@ int		ft_isalpha(int c);
  */
 int		ft_isdigit(int c);
 /**
- * @brief The ft_isalnum() function return 1 if the given character is a letter 
- * no matter if is upper o lower case or is a digit.
+ * @brief The ft_isalnum() function return 1 if the given character is
+ * a letter no matter if is upper o lower case or is a digit.
  * 
  * @param c int (the ascci value of the character)
- * @return ** int -> 0 false, 1 true (if c is a letter o a number between 0 and 9)
+ * @return ** int -> 0 false, 1 true (if c is a letter o a number
+ * between 0 and 9)
  */
 int		ft_isalnum(int c);
 /**
@@ -64,12 +65,16 @@ int		ft_isascii(int c);
  */
 int		ft_strlen(char *str);
 /**
- * @brief function writes len bytes of value c (converted to an unsigned char) to the string b.
+ * @brief function writes len bytes of value c (converted to an unsigned char)
+ * to the string b.
  * 
  * @param b the give string
- * @param c the character to use to fill the first "len" positions of the string .
+ * @param c the character to use to fill the first "len" positions
+ * of the string .
  * @param len the number of positions to overwritte.
  * @return ** char* 
  */
-char	*ft_memset(char *b, int c, unsigned int len);
+
+void	*ft_memset(void *b, int c, unsigned int len);
+void	ft_bzero(void *s, unsigned int len);
 #endif
