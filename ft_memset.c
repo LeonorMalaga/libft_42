@@ -6,19 +6,21 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:59:25 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/10 17:20:38 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/11 13:43:36 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_memset(char *b, int c, unsigned int len)
+void	*ft_memset(void *b, int c, unsigned int len)
 {
 	unsigned int	i;
+	int	*aux;
 
 	i = 0;
+	aux = (int *) b;
 	while (i < len)
 	{
-		b[i] = c;
+		aux[i] = c;
 		i++;
 	}
-	return (b);
+	return (aux);
 }
