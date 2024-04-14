@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/11 15:03:03 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/14 12:32:39 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int		ft_isascii(int c);
  */
 int		ft_strlen(char *str);
 /**
- * @brief function writes len bytes of value c (converted to an unsigned char)
- * to the string b.
+ * @brief The function ft_menset writes len bytes of value c
+ * (converted to an unsigned char) to the string b.
  * 
  * @param b the give string
  * @param c the character to use to fill the first "len" positions
@@ -76,5 +76,42 @@ int		ft_strlen(char *str);
  */
 
 void	*ft_memset(void *b, int c, unsigned int len);
+/**
+ * @brief The ft_bzero() function writes n zeroed bytes to the string s
+ * 
+ * @param s 
+ * @param len number of bytes to copy, be careful, 
+ * if the *b is for example a string of type long to copy a complete data 
+ * "leng" it has to be 8, to copy two positión "leng" it has to be 16
+ * @return ** void 
+ */
 void	ft_bzero(void *s, unsigned int len);
+/**
+ * @brief The ft_memcpy() function copies n bytes from memory area src
+ *  to memory area dst
+ * 
+ * @param dst it is a pointer to a space of memory, we don't specify the 
+ * type of date to be stored in that memory space.
+ * @param src it is a constant variable, which means that it must not 
+ * be modified.
+ * @param n number of bytes to copy,
+ * @return ** void* return dst. If dst and src are NULL, or both point to 
+ * the same memory location returns dst without doing anything else.
+ */
+void	*ft_memcpy(void *dst, const void *src, unsigned int n);
+/**
+ * @brief The memmove() function copies len bytes from string src to string dst. 
+ * The two strings may overlap-> if dst is > src we start to copy from position
+ *  n to 0, in other case we copy in the normal way from 0 to n.
+ * 
+ * @param dst it is a pointer to a space of memory, we don't specify the 
+ * type of date to be stored in that memory space.
+ * @param src it is a constant variable, which means that it must not 
+ * be modified.
+ * @param n number of bytes to copy,
+ * @return ** void* return dst. If dst and src are NULL, or both point to the
+ *  same memory location returns dst without doing anything else.
+ */
+void	*ft_memmove(void *dst, const void *src, unsigned int n);
+unsigned int ft_memmove(char *dst, const char *src, unsigned int n);
 #endif
