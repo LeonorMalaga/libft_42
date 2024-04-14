@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/14 12:32:39 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/14 13:50:14 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,29 @@
 
 /*Mandatory functions*/
 /**
+ * @brief return the length of the given string
+ * 
+ * @param str 
+ * @return ** int 
+ */
+unsigned int	ft_strlen(char *str);
+
+unsigned int	ft_strlcpy(char *dst, char *src, unsigned int n);
+/**
  * @brief  The ft_isalpha() function return 1 if the given character is
  * a letter no matter if is upper o lower case.
  * 
  * @param c int (the ascci value of the character)
  * @return ** int -> 0 false, 1 true (is a letter)
  */
-int		ft_isalpha(int c);
+int				ft_isalpha(int c);
 /**
  * @brief 
  * 
  * @param c int (the ascci value of the digit)
  * @return ** int -> 0 false, 1 true if c it is a number between 0 and 9.
  */
-int		ft_isdigit(int c);
+int				ft_isdigit(int c);
 /**
  * @brief The ft_isalnum() function return 1 if the given character is
  * a letter no matter if is upper o lower case or is a digit.
@@ -40,7 +49,7 @@ int		ft_isdigit(int c);
  * @return ** int -> 0 false, 1 true (if c is a letter o a number
  * between 0 and 9)
  */
-int		ft_isalnum(int c);
+int				ft_isalnum(int c);
 /**
  * @brief The ft_isprint() function indicate if the given character is a 
  * printing character
@@ -48,7 +57,7 @@ int		ft_isalnum(int c);
  * @param c int (the ascci value of the character)
  * @return int -> 0 false, 1 true (if c is between '' and '~')
  */
-int		ft_isprint(int c);
+int				ft_isprint(int c);
 /**
  * @brief The ft_isascii() function indicate if the given character is 
  * between 0 to 127 from the ascci table 
@@ -56,14 +65,8 @@ int		ft_isprint(int c);
  * @param c int (the ascci value of the character)
  * @return ** int -> 0 false, 1 true
  */
-int		ft_isascii(int c);
-/**
- * @brief return the length of the given string
- * 
- * @param str 
- * @return ** int 
- */
-int		ft_strlen(char *str);
+int				ft_isascii(int c);
+
 /**
  * @brief The function ft_menset writes len bytes of value c
  * (converted to an unsigned char) to the string b.
@@ -75,7 +78,7 @@ int		ft_strlen(char *str);
  * @return ** char* 
  */
 
-void	*ft_memset(void *b, int c, unsigned int len);
+void			*ft_memset(void *b, int c, unsigned int len);
 /**
  * @brief The ft_bzero() function writes n zeroed bytes to the string s
  * 
@@ -85,7 +88,7 @@ void	*ft_memset(void *b, int c, unsigned int len);
  * "leng" it has to be 8, to copy two positión "leng" it has to be 16
  * @return ** void 
  */
-void	ft_bzero(void *s, unsigned int len);
+void			ft_bzero(void *s, unsigned int len);
 /**
  * @brief The ft_memcpy() function copies n bytes from memory area src
  *  to memory area dst
@@ -98,7 +101,7 @@ void	ft_bzero(void *s, unsigned int len);
  * @return ** void* return dst. If dst and src are NULL, or both point to 
  * the same memory location returns dst without doing anything else.
  */
-void	*ft_memcpy(void *dst, const void *src, unsigned int n);
+void			*ft_memcpy(void *dst, const void *src, unsigned int n);
 /**
  * @brief The memmove() function copies len bytes from string src to string dst. 
  * The two strings may overlap-> if dst is > src we start to copy from position
@@ -112,6 +115,6 @@ void	*ft_memcpy(void *dst, const void *src, unsigned int n);
  * @return ** void* return dst. If dst and src are NULL, or both point to the
  *  same memory location returns dst without doing anything else.
  */
-void	*ft_memmove(void *dst, const void *src, unsigned int n);
-unsigned int ft_memmove(char *dst, const char *src, unsigned int n);
+void			*ft_memmove(void *dst, const void *src, unsigned int n);
+
 #endif

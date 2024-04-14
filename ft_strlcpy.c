@@ -6,44 +6,42 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:58:04 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/14 12:32:25 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/14 14:03:45 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-unsigned int ft_memmove(char *dst, const char *src, unsigned int n)
+unsigned int	ft_strlen(char *str)
 {
 	unsigned int	i;
-	unsigned int	len;
 
-	if ((!dst && !src))
-		return (0);
 	i = 0;
-	len = ft_strlen(src);
-    
-	if(src == dst)
-		return (len);
-	if (src > dst)
+	while (str[i] != '\0')
 	{
-		while (i < n)
+		i++;
+	}
+	return (i);
+}
+unsigned int	ft_strlcpy(char *dst, char *src, unsigned int n)
+{
+	unsigned int	i;
+	unsigned int	lensrc;
+	unsigned int	lendst;
+
+	i = 0;
+	lensrc = (unsigned int) ft_strlen(src);
+	lendst = (unsigned int) ft_strlen(dst);
+	if ((n > 0) && (lendst > 0))
+	{
+		while (i < (n - 1) && src[i] != '\0' && i < (lendst - 1))
 		{
 			dst[i] = src[i];
 			i++;
 		}
 		dst[i] = '\0';
 	}
-	else
-	{
-		dst[n] = '\0';
-		while (n--)
-		{
-			dst[n] = src[n];
-		}
-	}
-	return (len);
+	return (lensrc);
 }
-/*
 #include <string.h>
 #include <unistd.h>
 void ft_putchar(char c)
@@ -68,22 +66,19 @@ int main (int ar , char **arv)
 		char		*src = arv[2];
 		char		*num = arv[3];
 		unsigned int n= num[0] + '0';
-
-ft_print_string(dst);
-ft_print_string("\n");
-ft_print_string(src);
-ft_print_string("\n");
-ft_print_string(num);
-char *old_dst=memcpy(dst, src, n);
-ft_print_string("\nSRC after memcpy:  ");
-ft_print_string(src);
-ft_print_string("\nDST after memcpy:  ");
-ft_print_string(dst);
-ft_print_string("\n Return of memcpy:  ");
-ft_print_string(old_dst);
-char *o_dst=ft_memcpy(old_dst, src, n);
-ft_print_string("\nMI TEST\n");
-ft_print_string(old_dst);
-ft_print_string("\n");
-ft_print_string(o_dst);
-	}*/
+		ft_print_string("\nOrignal DST:\n");
+		ft_print_string(dst);
+		ft_print_string("\nOriginal SRC:\n");
+		ft_print_string(src);
+		ft_print_string("\nLoNGUTUD\n");
+		ft_print_string(num);
+		//strlcpy(dst, src, n);
+		ft_strlcpy(dst, src, n);
+		ft_print_string("\nDST after strlcpy:  ");
+		ft_print_string(dst);
+		ft_print_string("\nSRC after strlcpy:  ");
+		ft_print_string(src);
+		ft_print_string("\nNew LoNGUTUD\n");
+		ft_print_string(num);
+	}
+}
