@@ -1,34 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/14 10:58:04 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/15 12:53:02 by leonmart         ###   ########.fr       */
+/*   Created: 2024/04/15 13:00:38 by leonmart          #+#    #+#             */
+/*   Updated: 2024/04/15 15:19:07 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize)
+unsigned int	ft_strlcat(char *dst, const char *src, unsigned int dstsize)
 {
-	unsigned int	i;
+	unsigned int	s;
+	unsigned int	d;
+	unsigned int	dst_len;
+	unsigned int	src_len;
 
-	i = 0;
-	if (dstsize != 0)
+	d = 0;
+	src_len = 0;
+	while (src[src_len])
+		src_len++;
+	if (!dst && dstsize == 0)
+		return (src_len);
+	while (dst[d])
+		d++;
+	dst_len = d;
+	if (dstsize <= dst_len)
+		return (dstsize + src_len);
+	s = 0;
+	while (src[s] && d < (dstsize - 1))
 	{
-		while (src[i] && i < dstsize - 1)
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		dst[d] = src[s];
+		s++;
+		d++;
 	}
-	while (src[i])
-		i++;
-	return (i);
+	dst[d] = 0;
+	return (dst_len + src_len);
 }
 /*
 #include <string.h>
@@ -54,6 +64,7 @@ int main (int ar , char **arv)
 		char		*dst = arv[1];
 		char		*src = arv[2];
 		char		*num = arv[3];
+        char        aux;
 		unsigned int n= num[0] + '0';
 		ft_print_string("\nOrignal DST:\n");
 		ft_print_string(dst);
@@ -61,13 +72,15 @@ int main (int ar , char **arv)
 		ft_print_string(src);
 		ft_print_string("\nLoNGUTUD\n");
 		ft_print_string(num);
-		//strlcpy(dst, src, n);
-		ft_strlcpy(dst, src, n);
-		ft_print_string("\nDST after strlcpy:  ");
+		n = strlcat(dst, src, n);
+		//n = ft_strlcat(dst, src, n);
+		ft_print_string("\nDST after strlcat:  ");
 		ft_print_string(dst);
-		ft_print_string("\nSRC after strlcpy:  ");
+		ft_print_string("\nSRC after strlcat:  ");
 		ft_print_string(src);
 		ft_print_string("\nNew LoNGUTUD\n");
+        aux = (n - '0');
+        num = &aux;
 		ft_print_string(num);
 	}
 }*/

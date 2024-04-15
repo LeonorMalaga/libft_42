@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/14 13:50:14 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/15 15:02:34 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,35 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 /*Mandatory functions*/
 /**
  * @brief return the length of the given string
  * 
  * @param str 
- * @return ** int 
+ * @return ** unsigned int to can used in other functions
  */
 unsigned int	ft_strlen(char *str);
-
-unsigned int	ft_strlcpy(char *dst, char *src, unsigned int n);
+/**
+ * @brief if dstsize is not 0, ft_strlcpy() copies up to (dstsize - 1) characters
+ *  from the string src to dst,adding a NUL-terminating.
+ * 
+ * @param dst 
+ * @param src 
+ * @param dstsize 
+ * @return ** unsigned int the length of src.
+ */
+unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
+/**
+ * @brief 
+ * 
+ * @param dst 
+ * @param src 
+ * @param dstsize have to be biger than dst lengt + src 
+ * @return ** unsigned int 
+ */
+unsigned int			ft_strlcat(char *dst, const char *src, unsigned int size);
 /**
  * @brief  The ft_isalpha() function return 1 if the given character is
  * a letter no matter if is upper o lower case.
