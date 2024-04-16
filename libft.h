@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/16 17:41:37 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:05:46 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ unsigned int	ft_strlen(char *str);
  */
 unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
 /**
- * @brief 
+ * @brief strlcat() appends string src to the end of dst. 
+ * appends (dstsize - 1 - dst_length) characters
  * 
  * @param dst 
  * @param src 
- * @param dstsize have to be biger than dst lengt + src 
- * @return ** unsigned int 
+ * @param dstsize has to be > dst_length to append somthing
+ * @return ** unsigned if (!dst || dstsize <= dst_length)-> dstsize + src_length
+ * without append nothing
+ * else append and return (dst_length + src_length) 
  */
 unsigned int	ft_strlcat(char *dst, const char *src, unsigned int size);
 /**
@@ -83,7 +86,14 @@ int				ft_isprint(int c);
  * @return ** int -> 0 false, 1 true
  */
 int				ft_isascii(int c);
-
+/**
+ * @brief  The toupper() function converts a lower-case letter 
+ * to the corresponding upper-caseletter
+ * 
+ * @param c int the ascii integer value of the char
+ * @return ** int the ascii integer value of the upper case char
+ */
+int				ft_toupper(int c);
 /**
  * @brief The function ft_menset writes len bytes of value c
  * (converted to an unsigned char) to the string b.
