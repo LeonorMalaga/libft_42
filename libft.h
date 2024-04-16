@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/16 19:05:46 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/16 19:13:15 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,14 @@ int				ft_isascii(int c);
  * @return ** int the ascii integer value of the upper case char
  */
 int				ft_toupper(int c);
+/**
+ * @brief  The tolower() function converts a upper-case letter 
+ * to the corresponding lower-caseletter
+ * 
+ * @param c int the ascii integer value of the char
+ * @return ** int the ascii integer value of the lower case char
+ */
+int				ft_tolower(int c);
 /**
  * @brief The function ft_menset writes len bytes of value c
  * (converted to an unsigned char) to the string b.
