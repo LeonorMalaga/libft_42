@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/15 15:02:34 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:17:17 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ unsigned int	ft_strlen(char *str);
  * @param dst 
  * @param src 
  * @param dstsize 
- * @return ** unsigned int the length of src.
+ * @return ** unsigned int,  always the length of src.
  */
 unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
 /**
