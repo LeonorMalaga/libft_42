@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/16 19:13:15 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/17 12:34:10 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,5 +151,25 @@ void			*ft_memcpy(void *dst, const void *src, unsigned int n);
  *  same memory location returns dst without doing anything else.
  */
 void			*ft_memmove(void *dst, const void *src, unsigned int n);
-
+/**
+ * @brief 	while ((char)c != *s){ if (!*s) return (0); s++;} return ((char *)s);
+ * 
+ * @param s a string of characters.
+ * @param c int the ascii integer value of the char to locate. 
+ * @return a char* pointer to the first (char)c int *s, 
+ * if (char)c is not present in *s, return 0.
+ */
+char			*ft_strchr(const char *s, int c);
+/**
+ * @brief i = ft_strlen((char *) s);while (i >= 0)
+	{   if (s[i] == (char)c) return ((char *)(s + i));
+		i--;
+	}
+ * 
+ * @param s 
+ * @param c int the ascii integer value of the char to locate.
+ * @return  st_strrchr return a char* pointer to the last ocurrence of (char)c.
+ */
+char			*ft_strrchr(const char *s, int c);
+int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 #endif
