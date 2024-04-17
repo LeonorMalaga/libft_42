@@ -6,13 +6,13 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:26:50 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/14 13:49:57 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:13:49 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int	ft_strlen(char *str)
+unsigned int	ft_strlen(const char *str)
 {
 	unsigned int	i;
 

@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/17 12:34:10 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/17 18:51:41 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @param str 
  * @return ** unsigned int to can used in other functions
  */
-unsigned int	ft_strlen(char *str);
+unsigned int	ft_strlen(const char *str);
 /**
  * @brief if dstsize is not 0, ft_strlcpy() copies up to (dstsize - 1) characters
  *  from the string src to dst,adding a NUL-terminating.
@@ -171,5 +171,24 @@ char			*ft_strchr(const char *s, int c);
  * @return  st_strrchr return a char* pointer to the last ocurrence of (char)c.
  */
 char			*ft_strrchr(const char *s, int c);
+/**
+ * @brief  look for a different character between s1 and s2 as long as the 
+ * strings don't end and along (n-1) positions.
+ * 
+ * @param s1 
+ * @param s2 
+ * @param n 
+ * @return 0 if the two strings are equals and if  (!*s1 && !*s2) || (n <= 0)
+ */
 int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
+/**
+ * @brief 
+ * 
+ * @param s 
+ * @param c 
+ * @param n 
+ * @return ** void* 
+ */
+void			*ft_memchr(const void *s, int c, unsigned int n);
+int				ft_memcmp(const void *s1, const void *s2, unsigned int n);
 #endif
