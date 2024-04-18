@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/17 18:51:41 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:21:17 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,4 +191,6 @@ int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
  */
 void			*ft_memchr(const void *s, int c, unsigned int n);
 int				ft_memcmp(const void *s1, const void *s2, unsigned int n);
+char			*strnstr(const char *haystack, const char *needle,
+					unsigned int len);
 #endif
