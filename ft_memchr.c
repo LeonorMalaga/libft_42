@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:13:10 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/17 18:11:15 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/18 15:05:18 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 void	*ft_memchr(const void *s, int c, unsigned int n)
 {
 	unsigned int	index;
+	unsigned char	*ms;
 
+	ms = (unsigned char *)s;
 	index = 0;
 	while (index < n)
 	{
-		if (((unsigned char *)s)[index] == (unsigned char)c)
-			return (((unsigned char *)s) + index);
+		if (ms[index] == (unsigned char)c)
+			return (ms + index);
 		index++;
 	}
 	return (0);
