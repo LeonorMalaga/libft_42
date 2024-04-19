@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:26:50 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/17 18:13:49 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/19 12:09:18 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@ unsigned int	ft_strlen(const char *str)
 	unsigned int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (*str)
 	{
 		i++;
+		str++;
 	}
 	return (i);
 }
