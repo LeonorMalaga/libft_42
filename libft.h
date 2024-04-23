@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/22 13:51:13 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/23 17:42:37 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <string.h>
 
 /**
  * @brief return the length of the given string
@@ -195,4 +196,8 @@ char			*ft_strnstr(const char *haystack, const char *needle,
 					unsigned int len);
 int				ft_atoi(char *str);
 void			*ft_calloc(unsigned int count, unsigned int size);
+char			*ft_strdup(const char *s1);
+char			*ft_substr(const char *s, unsigned int start, size_t len);
+char			*ft_strjoin(char const *s1, char const *s2);
+
 #endif
