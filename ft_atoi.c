@@ -6,13 +6,13 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/21 12:11:12 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/21 13:52:22 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/24 10:15:42 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ignorespace(char *c)
+static int	ignorespace(char *c)
 {
 	if (*c == ' ' || *c == '\t' || *c == '\n'
 		|| *c == '\v' || *c == '\f' || *c == '\r')

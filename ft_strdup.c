@@ -6,31 +6,18 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:18:29 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/23 14:21:30 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/24 09:58:11 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-unsigned int	ft_len(const char *s1)
-{
-	unsigned int	i;
-
-	i = 0;
-	while (*s1)
-	{
-		i++;
-		s1++;
-	}
-	return (i);
-}
 
 char	*ft_strdup(const char *s1)
 {
 	char					*p;
 	unsigned int			len;
 
-	len = ft_len (s1);
+	len = ft_strlen (s1);
 	p = malloc (len + 1);
 	if (!p)
 		return (0);

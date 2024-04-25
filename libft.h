@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/23 18:31:36 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:16:49 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ void			*ft_memcpy(void *dst, const void *src, unsigned int n);
  */
 void			*ft_memmove(void *dst, const void *src, unsigned int n);
 /**
- * @brief 	while ((char)c != *s){ if (!*s) return (0); s++;} return ((char *)s);
+ * @brief 	The strchr() function locates the first occurrence of c;
  * 
  * @param s a string of characters.
  * @param c int the ascii integer value of the char to locate. 
@@ -199,6 +199,13 @@ void			*ft_calloc(unsigned int count, unsigned int size);
 char			*ft_strdup(const char *s1);
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
+/**
+ * @brief the funciton ft_strtrim, trims the characters from the second string to the first one, and return the result.
+ * 
+ * @param s1 The original string
+ * @param set The list of characters to be excluded.
+ * @return char* a string that contaings the characters that are in "s1" but not in "set".
+ */
 char			*ft_strtrim(char const *s1, char const *set);
 
 #endif
