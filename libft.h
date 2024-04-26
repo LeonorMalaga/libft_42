@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/25 15:16:49 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:11:22 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,28 +183,66 @@ char			*ft_strrchr(const char *s, int c);
  */
 int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
 /**
- * @brief 
+ * @brief locate byte in byte string
  * 
  * @param s 
  * @param c 
  * @param n 
- * @return void* 
+ * @return void* a pointer to the first ocurrence of the character 'c'
+ *  in the string 's'
  */
 void			*ft_memchr(const void *s, int c, unsigned int n);
+/**
+ * @brief The ft_memcmp() function compares byte string s1 against byte 
+ * string s2. Both strings are assumed to be n bytes long.
+ * 
+ * @param s1 
+ * @param s2 
+ * @param n 
+ * @return return 0 if both string have the same content.
+ */
 int				ft_memcmp(const void *s1, const void *s2, unsigned int n);
+/**
+ * @brief locate a substring in a string
+ * 
+ * @param haystack 
+ * @param needle 
+ * @param len 
+ * @return char* haystack if needle is '\0', return 0 if haystack is '0' o the
+ *  len < length_needle
+ */
 char			*ft_strnstr(const char *haystack, const char *needle,
 					unsigned int len);
+/**
+ * @brief If str init with + o - number other letters, this function 
+ * return the number with it sing.
+ * If str start with more than one + or -, this function return 0
+ * 
+ * @param str 
+ * @return int 
+ */
 int				ft_atoi(char *str);
 void			*ft_calloc(unsigned int count, unsigned int size);
 char			*ft_strdup(const char *s1);
+/**
+ * @brief Allocate memory to a pice of the string "s" that strart in the
+ *  index "start" and end in (start + len)
+ * 
+ * @param s 
+ * @param start 
+ * @param len 
+ * @return char* return a pointer to the first character of the mentioned copy
+ */
 char			*ft_substr(const char *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 /**
- * @brief the funciton ft_strtrim, trims the characters from the second string to the first one, and return the result.
+ * @brief the funciton ft_strtrim, trims the characters from the second string
+ *  to the first one, and return the result.
  * 
  * @param s1 The original string
  * @param set The list of characters to be excluded.
- * @return char* a string that contaings the characters that are in "s1" but not in "set".
+ * @return char* a string that contaings the characters that are in "s1" 
+ * but not in "set".
  */
 char			*ft_strtrim(char const *s1, char const *set);
 

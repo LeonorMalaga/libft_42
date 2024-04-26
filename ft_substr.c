@@ -6,12 +6,14 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 15:20:18 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/23 17:28:32 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/26 12:00:28 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
+//Allocate memory to a pice of the string "s" that strart in the index "start"
+//and end in (start + len)
+//return a pointer to the first character of the mentioned copy
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	char	*str;
@@ -19,7 +21,6 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	size_t	len_s;
 
 	str = 0;
-	len_s = 0;
 	len_s = ft_strlen(s);
 	if (len_s == 0 || start > len_s || len <= 0 || start < 0)
 		len = 0;
