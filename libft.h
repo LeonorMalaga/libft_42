@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/26 15:11:22 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:38:21 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,4 +246,5 @@ char			*ft_strjoin(char const *s1, char const *s2);
  */
 char			*ft_strtrim(char const *s1, char const *set);
 
+char			**ft_split(char const *s, char c);
 #endif
