@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:58:04 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/14 11:45:00 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/27 11:35:42 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,15 @@
 
 void	*ft_memmove(void *dst, const void *src, unsigned int n)
 {
-	unsigned int	i;
 	char			*mdst;
 	char			*msrc;
 
-	i = 0;
 	mdst = (char *)dst;
 	msrc = (char *)src;
 	if ((!dst && !src) || (dst == src))
 		return (dst);
 	if (src > dst)
-	{
-		while (i < n)
-		{
-			mdst[i] = msrc[i];
-			i++;
-		}
-	}
+		mdst = ft_memcpy(dst, src, n);
 	else
 	{
 		while (n--)

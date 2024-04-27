@@ -6,12 +6,12 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 11:18:29 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/26 11:42:01 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:52:28 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//allocates memory for a copy of S1 and returns the pointer to the copy
+//allocates memory for a copy of "s1" and returns the pointer to the copy.
 char	*ft_strdup(const char *s1)
 {
 	char					*p;
