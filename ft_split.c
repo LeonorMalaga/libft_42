@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:35:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/27 19:29:33 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/28 14:10:29 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,14 @@ static int	ft_count_words(char const *str, char c)
 	{
 		if (str[i] == c && str[i + 1] != '\0' && str[i + 1] != c)
 			count++;
-		i++;	
+		i++;
 	}
 	if (str[0] != c && str[0] != '\0')
 		count++;
 	return (count);
 }
 
-static char	*ft_putword(char *word, char const *s, int i, int word_len)
-{
-	int	j;
-
-	j = 0;
-	while (word_len > 0)
-	{
-		word[j] = s[i - word_len];
-		j++;
-		word_len--;
-	}
-	word[j] = '\0';
-	return (word);
-}
-static int ft_word_len(char const *s, char c, int index)
+static int	ft_word_len(char const *s, char c, int index)
 {
 	int	word_len;
 
@@ -72,8 +58,9 @@ static int ft_word_len(char const *s, char c, int index)
 		index++;
 		word_len++;
 	}
-	return (index);
+	return (word_len);
 }
+
 static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 {
 	int	i;
@@ -86,31 +73,29 @@ static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 	{
 		while (s[i] && s[i] == c)
 			i++;
-
 		word_len = ft_word_len(s, c, i);
-
-		i = i + word_len;
-		s2[word] = (char *)malloc(sizeof(char) * (word_len + 1));
+		s2[word] = ft_substr(s, i, word_len);
 		if (!s2[word])
 		{
 			free_array (s2);
 			return (0);
 		}
-		ft_putword(s2[word], s, i, word_len);
+		i = i + word_len;
 		word_len = 0;
 		word++;
 	}
 	s2[word] = 0;
 	return (s2);
 }
+
 char	**ft_split(char const *s, char c)
 {
 	char			**s2;
 	unsigned int	num_words;
-	if(!s)
+
+	if (!s)
 		return (0);
 	num_words = ft_count_words(s, c);
-	//printf("\n %d \n", num_words);
 	s2 = (char **)malloc(sizeof(char *) * (num_words + 1));
 	if (!s2)
 		return (0);
@@ -118,7 +103,7 @@ char	**ft_split(char const *s, char c)
 	if (!s2)
 	{
 		free_array(s2);
-		return(0);			
+		return (0);
 	}
 	return (s2);
 }
@@ -130,6 +115,9 @@ void    check_leaks(void)
 
 int main (void)
 {
+	int i;
+
+	i = 0;
  //char *s = "       Esto      es una      prueba     ";
  //char c = ' ';
  //char **res = ft_split(s, c);
@@ -151,18 +139,19 @@ int main (void)
 // char *s = 0;
 // char c = ' ';
 // char **res = ft_split(s, c);//segmentation fault
-char *s = "olol euismod non,. Sed non risus. Suspendisse mi.";
+char *s = " Suspendisse   mi 1234. ";
 char c = ' ';
 char **res = ft_split(s, c);
 
-int i;
-
-i = 0;
 while(res[i])
 {   
-		printf("\n %s \n", res[i]);
+	printf("\n %s", res[i]);
 	i++;
 }
+printf("\n %s", "-------end test-----");
+
+free_array(res);
+
 atexit(check_leaks);
 return (0);
 }*/
