@@ -6,13 +6,13 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:35:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/28 14:10:29 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:27:33 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	free_array(char **s2)
+static char	**free_array(char **s2)
 {
 	int	i;
 
@@ -22,12 +22,13 @@ static void	free_array(char **s2)
 		while (s2[i])
 		{
 			free(s2[i]);
-			s2[i] = 0;
+			s2[i] = NULL;
 			i++;
 		}
 		free(s2);
-		s2 = 0;
+		s2 = NULL;
 	}
+	return (s2);
 }
 
 static int	ft_count_words(char const *str, char c)
@@ -77,7 +78,7 @@ static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 		s2[word] = ft_substr(s, i, word_len);
 		if (!s2[word])
 		{
-			free_array (s2);
+			s2 = free_array (s2);
 			return (0);
 		}
 		i = i + word_len;
@@ -102,7 +103,7 @@ char	**ft_split(char const *s, char c)
 	s2 = ft_split_words(s, c, s2, num_words);
 	if (!s2)
 	{
-		free_array(s2);
+		s2 = free_array(s2);
 		return (0);
 	}
 	return (s2);
@@ -150,7 +151,9 @@ while(res[i])
 }
 printf("\n %s", "-------end test-----");
 
-free_array(res);
+    res = free_array(res);
+	if (res)
+        printf("\n-----RES It is not null-----\n");
 
 atexit(check_leaks);
 return (0);
