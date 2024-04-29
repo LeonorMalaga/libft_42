@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:13:49 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/28 15:47:00 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/29 15:30:44 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char *ft_str_negative()
    return (r);
 }
 
-char *ft_add_char_to_the_end(char *s, char c)
+char *ft_add_char(char *s, char c)
 {
 	char *new_s;
 	int len;
@@ -44,55 +44,36 @@ char *ft_add_char_to_the_end(char *s, char c)
 		len = ft_strlen(s) + 1;
 	else
 		len = 1;
-	new_s = malloc(len + 1);
+	new_s = malloc((len + 1) * sizeof(char));
 	if(!new_s)
 	{
 		free(new_s);
 		new_s = 0;
-		return(s);
+		return(new_s);
 	}
 	ft_bzero(new_s, len + 1);
 	if(s)
-    	ft_strlcpy(new_s,s,len);		
-	new_s[len - 1] = c;
-	new_s[len] = '\0';
-	return (new_s);
-}
-char *ft_add_char_to_the_beginning(char *s, char c)
-{
-	char *new_s;
-	int len;
-	if(s)
-		len = ft_strlen(s) + 1;
-	else
-		len = 1;
-	new_s = malloc(len + 1);
-	if(!new_s)
 	{
-		free(new_s);
-		new_s = 0;
-		return(s);
+    	ft_strlcpy(new_s,s,len + 1);
+		free(s);
+		s = 0;
 	}
-	ft_bzero(new_s, len + 1);
-	if(s)
-    	ft_strlcpy(new_s,s,len);		
 	new_s[len - 1] = c;
 	new_s[len] = '\0';
 	return (new_s);
 }
 
-/*char	*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	int len;
 	char *r;
 
-    r = 0;
-	len = 0;
+    if (!r)
+		r = 0;
 	if (n == -2147483648)
 	{
 		r = ft_str_negative();
-		ft_putnbr (2147483);
-		ft_putnbr (648);
+		ft_itoa (2147483);
+		ft_itoa (648);
 	}
 	else
 	{
@@ -103,13 +84,12 @@ char *ft_add_char_to_the_beginning(char *s, char c)
 		}
 		if (n >= 10)
 		{
-			ft_putnbr (n / 10);
+			ft_itoa (n / 10);
 		}
-		len++;
-		r = ft_add_char_to_the_end (r,(n % 10) + '0');
+		r = ft_add_char (r,(n % 10) + '0');
 	}
 return (r);
-}*/
+}
 void    check_leaks(void)
 {
     system("leaks a.out");
@@ -120,11 +100,12 @@ int main (void)
 	//char *r ="";
 	//char *r = 0;
 	//char c = '4';
-
+    //printf("\n %s", ft_str_negative());
 	//printf("\n %s", ft_add_char(r, c));
-	//free(r);
+	printf("\n %s", ft_itoa(15));
+	//printf("\n %s", ft_itoa(-4));
+	//printf("\n %s", ft_itoa(2147483647));
 
-	printf("\n %s", ft_str_negative());
-	//atexit(check_leaks);
+	atexit(check_leaks);
 	return(0);
 }
