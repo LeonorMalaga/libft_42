@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:35:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/29 13:27:33 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:29:45 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static char	**free_array(char **s2)
 		while (s2[i])
 		{
 			free(s2[i]);
-			s2[i] = NULL;
+			s2[i] = 0;
 			i++;
 		}
 		free(s2);
-		s2 = NULL;
+		s2 = 0;
 	}
 	return (s2);
 }
