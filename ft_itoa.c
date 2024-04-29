@@ -20,41 +20,42 @@
  * @return a string with length = s_length + 1, which is a copy of s, plus 
  * the "c" character at the end.  
  */
-char *ft_str_negative()
+static char	*ft_str_negative(void)
 {
-	char *r;
+	char	*r;
 
 	r = malloc(2);
-	if(!r)
+	if (!r)
 	{
 		free(r);
-		r = 0;
-		return(0);
+		r = NULL;
+		return (NULL);
 	}
-	r[0]= '-';
-	r[1]= '\0';
-   return (r);
+	r[0] = '-';
+	r[1] = '\0';
+	return (r);
 }
 
-char *ft_add_char(char *s, char c)
+static char	*ft_add_char(char *s, char c)
 {
-	char *new_s;
-	int len;
-	if(s)
+	char	*new_s;
+	int		len;
+
+	if (s)
 		len = ft_strlen(s) + 1;
 	else
 		len = 1;
-	new_s = malloc((len + 1) * sizeof(char));
-	if(!new_s)
+	new_s = (char *) malloc((len + 1) * sizeof(char));
+	if (!new_s)
 	{
 		free(new_s);
-		new_s = 0;
-		return(new_s);
+		new_s = NULL;
+		return (NULL);
 	}
 	ft_bzero(new_s, len + 1);
-	if(s)
+	if (s)
 	{
-    	ft_strlcpy(new_s,s,len + 1);
+		ft_strlcpy(new_s, s, len + 1);
 		free(s);
 		s = 0;
 	}
@@ -63,33 +64,43 @@ char *ft_add_char(char *s, char c)
 	return (new_s);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_n_to_str(int n, char *str)
 {
-	char *r;
-
-    if (!r)
-		r = 0;
 	if (n == -2147483648)
 	{
-		r = ft_str_negative();
-		ft_itoa (2147483);
-		ft_itoa (648);
+		str = ft_str_negative();
+		str = ft_n_to_str (2147483, str);
+		str = ft_n_to_str (648, str);
 	}
 	else
 	{
 		if (n < 0)
 		{
-			r = ft_str_negative();
+			str = ft_str_negative();
 			n = -n;
 		}
 		if (n >= 10)
 		{
-			ft_itoa (n / 10);
+			str = ft_n_to_str ((n / 10), str);
 		}
-		r = ft_add_char (r,(n % 10) + '0');
+		if (n == 0)
+			str = ft_add_char (str, '0');
+		else
+			str = ft_add_char (str, (n % 10) + '0');
 	}
-return (r);
+	return (str);
 }
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+
+	str = 0;
+	if (!n || n == -0)
+		return (ft_n_to_str(0, str));
+	return (ft_n_to_str(n, str));
+}
+/*
 void    check_leaks(void)
 {
     system("leaks a.out");
@@ -97,15 +108,20 @@ void    check_leaks(void)
 int main (void)
 {
 	//char *r ="123";
-	//char *r ="";
+	//char *r ="";printf("\n %s", ft_itoa(-2147483648));
 	//char *r = 0;
 	//char c = '4';
+        char *str;
+        str = 0;
     //printf("\n %s", ft_str_negative());
 	//printf("\n %s", ft_add_char(r, c));
-	printf("\n %s", ft_itoa(15));
+	//printf("\n %s", ft_n_to_str (15, str));
 	//printf("\n %s", ft_itoa(-4));
-	//printf("\n %s", ft_itoa(2147483647));
-
-	atexit(check_leaks);
+	//printf("\n %s", ft_itoa(-2147483648));
+        //printf("\n %s", ft_itoa(-0));
+        str = ft_itoa(2147483647);
+	printf("\n %s",str);
+        free(str);
+        atexit(check_leaks);
 	return(0);
-}
+}*/
