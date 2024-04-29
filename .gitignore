@@ -1,0 +1,6 @@
+a.out.dSYM
+*.swp
+*.o
+*.a
+a.out
+main.c
