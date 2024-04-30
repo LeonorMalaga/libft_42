@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/27 13:36:50 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/30 19:27:33 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -306,8 +306,25 @@ char			*ft_strjoin(char const *s1, char const *s2);
  * but not in "set".
  */
 char			*ft_strtrim(char const *s1, char const *set);
-
+/**
+ * @brief Allocate memory for a double array, which will contain in each position
+ * a pice of "s".
+ * 
+ * @param s the string to devide in pices, splited by "c" charater.
+ * @param c separating character.
+ * @return char** a pointer to the first position of a
+ *  double array that contains the pieces of "s". 
+ */
 char			**ft_split(char const *s, char c);
-
+/**
+ * @brief 
+ * 
+ * @param n 
+ * @return char* 
+ */
 char			*ft_itoa(int n);
+
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+void ft_striteri(char *s, void (*f)(unsigned int, char*));
 #endif

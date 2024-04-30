@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:13:49 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/29 15:30:44 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/30 14:50:14 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@ static char	*ft_str_negative(void)
 	r[1] = '\0';
 	return (r);
 }
+/**
+ * @brief free s and return a new string with a copy of "s" plus 
+ * the character "c" at the end.
+ * 
+ * @param s The string to copy. If "s" doesn't exit don't worry
+ * a new string with only the character "c" goint to be create.
+ * @param c the character to add.
+ * @return char* the new string with lenght = s_lenght + 1.
+ */
 
 static char	*ft_add_char(char *s, char c)
 {
@@ -63,6 +72,15 @@ static char	*ft_add_char(char *s, char c)
 	new_s[len] = '\0';
 	return (new_s);
 }
+/**
+ * @brief fills "str" with the conversion of the integer "n" to string.
+ * and returns it.
+ * 
+ * @param n the number to converted to string.
+ * @param str a empty string. if "str" is not enought big
+ *  the function cause a: !! segmenttion fault !!.
+ * @return char* the string version of "n", str stuffed.
+ */
 
 static char	*ft_n_to_str(int n, char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:35:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/29 13:29:45 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/04/30 15:21:37 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,16 @@ static int	ft_count_words(char const *str, char c)
 		count++;
 	return (count);
 }
+/**
+ * @brief the function ft_word_len() return the amount of characters
+ * between the positions "index" and the first ocurence of "c" in "s".
+ * 
+ * @param s full string, if "s" doesn't exist
+ *  the function cause a: !! segmenttion fault !!.
+ * @param c end character.
+ * @param index init position.
+ * @return int-> 0 ,if at position "index" we have a "c" character.
+ */
 
 static int	ft_word_len(char const *s, char c, int index)
 {
@@ -61,6 +71,20 @@ static int	ft_word_len(char const *s, char c, int index)
 	}
 	return (word_len);
 }
+/**
+ * @brief ft_split_words() devide in pices,
+ * the string "s" splited by character "c"
+ * and copy each piece to a consecutive "s2" position.
+ * 
+ * @param s String to split into pieces. if "s" doesn't exist
+ *  the function cause a: !! segmenttion fault !!.
+ * @param c the separator characte
+ * @param s2 a double empty array were alocate every pice of "s".
+ * if "s" doesn't exist
+ *  the function cause a: !! segmenttion fault !!.
+ * @param num_words the len of s2.
+ * @return char** a double array with a "pice of s" in every position.
+ */
 
 static char	**ft_split_words(char const *s, char c, char **s2, int num_words)
 {
