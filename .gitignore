@@ -1,3 +1,4 @@
+*.txt
 *.dSYM
 a.out.dSYM
 *.swp

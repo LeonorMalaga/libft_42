@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/01 12:47:38 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:32:20 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,4 +343,12 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
  * @param f The function with header: "void ft_name (unsigned int n, char *c);"" 
  */
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
+/**
+ * @brief Write a charracter in the first position of the opened file 
+ * descriptor fd
+ * 
+ * @param c the character to write
+ * @param fd the open file desctiptor "int fd = open (arv[1], O_WRONLY);"
+ */
+void			ft_putchar_fd(char c, int fd);
 #endif
