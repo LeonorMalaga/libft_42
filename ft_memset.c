@@ -6,9 +6,11 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:59:25 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/14 11:14:22 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 12:00:16 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	*ft_memset(void *b, int c, unsigned int len)
 {
@@ -24,3 +26,10 @@ void	*ft_memset(void *b, int c, unsigned int len)
 	}
 	return (str);
 }
+/*
+int main (void)
+{
+   printf("\n result: %s ", ft_memset("\0", 0, 1));
+	return (0);
+}
+*/

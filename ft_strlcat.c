@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 13:00:38 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/16 18:47:48 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 11:41:11 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,34 @@ int main (void)
 		ft_print_string(res_bc_01);
 		ft_print_string("\nft_strlcat:  ");
 		ft_print_string(res_ft_01);
+}
+
+int main (void)
+{
+	char	dst[] ="1234";
+	char	src[] = "ab";
+
+		char		*dst;
+		char		*src;
+		dst= malloc (5);
+		src = malloc (3);
+
+		src[0] = 'a';
+		src[1] = 'b';
+		src[2] = '\0';
+		dst[0] = '1';
+		dst[1] = '2';
+		dst[2] = '3';
+		dst[3] = '4';
+		dst[4] = '\0';
+
+
+	
+		unsigned int n= 4;
+		unsigned int n2 = 0;
+
+	        n2 = ft_strlcat(src, dst, n);
+		printf("\n string1: %s ,sice: %d ,append result : %s", src , n2, dst);
+	return (0);
 }
 */

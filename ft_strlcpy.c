@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 10:58:04 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/15 12:53:02 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 10:58:54 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int main (int ar , char **arv)
 		char		*src = arv[2];
 		char		*num = arv[3];
 		unsigned int n= num[0] + '0';
+		unsigned int n2 = 0;
 		ft_print_string("\nOrignal DST:\n");
 		ft_print_string(dst);
 		ft_print_string("\nOriginal SRC:\n");
@@ -69,5 +70,17 @@ int main (int ar , char **arv)
 		ft_print_string(src);
 		ft_print_string("\nNew LoNGUTUD\n");
 		ft_print_string(num);
+        n2 = ft_strlcpy(dst,src,n);
+		printf("\n original: %s ,sice: %d ,copy: %s", src , n2, dst);
 	}
-}*/
+		char		*dst;
+		char		*src;
+		dst= malloc (1);
+		src = malloc (3);
+		src = "12";
+		unsigned int n= 2;
+		unsigned int n2 = 0;
+	        n2 = ft_strlcpy(dst,src,n);
+		printf("\n original: %s ,sice: %d ,copy: %s", src , n2, dst);
+}
+*/

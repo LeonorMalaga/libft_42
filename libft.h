@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/30 19:27:33 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 12:47:38 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 /**
  * @brief return the length of the given string
  * 
- * @param str If "str" doesn't exist (is 0 or NULL) the function cause a:
- * !! segmenttion fault ¡¡.
+ * @param str If "str" doesn't exist (is 0 or NULL) the function return NULL.
  * @return ** unsigned int to can used in other functions
  */
 unsigned int	ft_strlen(const char *str);
@@ -30,10 +29,10 @@ unsigned int	ft_strlen(const char *str);
  * @brief if dstsize is not 0, ft_strlcpy() copies up to (dstsize - 1) characters
  *  from the string src to dst, adding a NUL-terminating.
  * 
- * @param dst If "dst" doesn't exist (is 0 or NULL) the function cause a:
- * !! segmenttion fault ¡¡.
- * @param src If "str" doesn't exist (is 0 or NULL) the function cause a:
- * !! segmenttion fault ¡¡.
+ * @param dst It is necesarry declare it with malloc before passing 
+ * it to the function.
+ * @param src It is necesarry declare it with malloc before passing 
+ * it to the function.
  * @param dstsize if "dstsize = 0" the fun
  * @return ** unsigned int,  always the length of src.
  */
@@ -42,10 +41,8 @@ unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
  * @brief strlcat() appends string src to the end of dst. 
  * appends (dstsize - 1 - dst_length) characters
  * 
- * @param dst  If "dst" doesn't exist (is 0 or NULL) the function cause a:
- * !! segmenttion fault ¡¡.
- * @param src If "str" doesn't exist (is 0 or NULL) the function cause a:
- * !! segmenttion fault ¡¡.
+ * @param dst this chain will be modified
+ * @param src this string will be appended to the end of the dst string.
  * @param dstsize has to be > dst_length to append somthing
  * @return ** unsigned if (!dst || dstsize <= dst_length)-> dstsize + src_length
  * without append nothing
@@ -307,8 +304,8 @@ char			*ft_strjoin(char const *s1, char const *s2);
  */
 char			*ft_strtrim(char const *s1, char const *set);
 /**
- * @brief Allocate memory for a double array, which will contain in each position
- * a pice of "s".
+ * @brief Allocate memory for a double array, which will contain in 
+ * each position a pice of "s".
  * 
  * @param s the string to devide in pices, splited by "c" charater.
  * @param c separating character.
@@ -317,14 +314,33 @@ char			*ft_strtrim(char const *s1, char const *set);
  */
 char			**ft_split(char const *s, char c);
 /**
- * @brief 
+ * @brief Allocate memory to a string to introduce in it 
+ * the conversion of the integer "n" to characters.
  * 
- * @param n 
- * @return char* 
+ * @param n the integer to convert to string.
+ * @return char* the new string
  */
 char			*ft_itoa(int n);
-
+/**
+ * @brief Applies the function ’f’ to each character of the
+ * string ’s’, and passing its index as first argument
+ * to create a new string (with malloc(3)) resulting
+ * from successive applications of ’f’.
+ * 
+ * @param s A string. If s == NULL return 0.
+ * @param f The function with header: "char ft_name (unsigned int n, char c);"
+ * @return char* A new string with the result of passing each character
+ * of "s" by "f". 
+ */
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-
-void ft_striteri(char *s, void (*f)(unsigned int, char*));
+/**
+ * @brief Applies the function ’f’ to each character of the
+ * string ’s’ passed as argument, passing its index as first argument.
+ * Each character is passed by address to ’f’ to modify "s" if "f" 
+ * has that purpose.
+ * 
+ * @param s A string. If s == NULL return 0.
+ * @param f The function with header: "void ft_name (unsigned int n, char *c);"" 
+ */
+void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 #endif

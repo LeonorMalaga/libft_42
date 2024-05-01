@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:26:50 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/26 12:53:12 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 10:40:50 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,14 @@ void	ft_putnbr(int nb)
 }
 int	main(void)
 {
-	int n;
+	//int n;
 
-	n=ft_strlen("Hello world");
-	ft_putnbr(n);
-	ft_putnbr(123);
+	//n=ft_strlen("Hello world");
+	//ft_putnbr(n);
+	//ft_putnbr(123);
+	char *s;
+
+     s = "";
+	printf("\n %s", s);
 	return (0);
-}
-*/
+}*/
