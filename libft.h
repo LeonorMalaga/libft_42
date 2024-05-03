@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/01 13:32:20 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/03 19:50:11 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <stdio.h>
 # include <string.h>
 
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 /**
  * @brief return the length of the given string
  * 
@@ -344,11 +349,40 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
  */
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 /**
- * @brief Write a charracter in the first position of the opened file 
- * descriptor fd
+ * @brief Write a character in the first position of the opened file 
+ * descriptor "fd", if we call the function without closing the file descriptor
+ * each new character will be written one after the other.
  * 
- * @param c the character to write
- * @param fd the open file desctiptor "int fd = open (arv[1], O_WRONLY);"
+ * @param c the character to write.
+ * @param fd the open file descriptor "int fd = open (arv[1], O_WRONLY);"
  */
 void			ft_putchar_fd(char c, int fd);
+/**
+ * @brief Write a string in the first position of the opened file 
+ * descriptor "fd", if we call the function without closing the file descriptor
+ * each new string will be written one after the other.
+ * 
+ * @param *s the string to write.
+ * @param fd the open file descriptor "int fd = open (arv[1], O_WRONLY);"
+ */
+void			ft_putstr_fd(char *s, int fd);
+/**
+ * @brief Write a string in the first position of the opened file 
+ * descriptor "fd" followeb by a newline, 
+ * if we call the function without closing the file descriptor
+ * each new string will be written line after line.
+ * 
+ * @param *s the string to write.
+ * @param fd the open file descriptor "int fd = open (arv[1], O_WRONLY);"
+ */
+void			ft_putendl_fd(char *s, int fd);
+/**
+ * @brief Converts each digit of the integer ’n’ to char so that it 
+ * can be writte to the given file descriptor. I pas
+ * 
+ * @param n The integer.
+ * @param fd The file descriptor on which to write.
+ */
+void			ft_putnbr_fd(int n, int fd);
+t_list			*ft_lstnew(void *content);
 #endif

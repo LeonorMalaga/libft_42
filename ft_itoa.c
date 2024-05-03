@@ -6,71 +6,34 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:13:49 by leonmart          #+#    #+#             */
-/*   Updated: 2024/04/30 14:50:14 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:09:31 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 /**
- * @brief Creates a new string, it does not free "s" just copies it adding at 
- * the end the character "c".  
+ * @brief Calculate the number of digits of the integer "n" if it is negative
+ * has one more for the sing "-".
  * 
- * @param s the string to copy.
- * @param c the character to add.
- * @return a string with length = s_length + 1, which is a copy of s, plus 
- * the "c" character at the end.  
+ * @param n the number.
+ * @return the lenght of the integer "n". 
  */
-static char	*ft_str_negative(void)
+static int	ft_n_len(int n)
 {
-	char	*r;
+	int	len;
 
-	r = malloc(2);
-	if (!r)
+	len = 0;
+	if (n <= 0)
 	{
-		free(r);
-		r = NULL;
-		return (NULL);
-	}
-	r[0] = '-';
-	r[1] = '\0';
-	return (r);
-}
-/**
- * @brief free s and return a new string with a copy of "s" plus 
- * the character "c" at the end.
- * 
- * @param s The string to copy. If "s" doesn't exit don't worry
- * a new string with only the character "c" goint to be create.
- * @param c the character to add.
- * @return char* the new string with lenght = s_lenght + 1.
- */
-
-static char	*ft_add_char(char *s, char c)
-{
-	char	*new_s;
-	int		len;
-
-	if (s)
-		len = ft_strlen(s) + 1;
-	else
 		len = 1;
-	new_s = (char *) malloc((len + 1) * sizeof(char));
-	if (!new_s)
-	{
-		free(new_s);
-		new_s = NULL;
-		return (NULL);
+		n = -n;
 	}
-	ft_bzero(new_s, len + 1);
-	if (s)
+	while (n > 0)
 	{
-		ft_strlcpy(new_s, s, len + 1);
-		free(s);
-		s = 0;
+		len++;
+		n = n / 10;
 	}
-	new_s[len - 1] = c;
-	new_s[len] = '\0';
-	return (new_s);
+	return (len);
 }
 /**
  * @brief fills "str" with the conversion of the integer "n" to string.
@@ -79,44 +42,69 @@ static char	*ft_add_char(char *s, char c)
  * @param n the number to converted to string.
  * @param str a empty string. if "str" is not enought big
  *  the function cause a: !! segmenttion fault !!.
+ * @param len the number of digits of the integer "n" if it is negative
+ * has one more for the "-".
  * @return char* the string version of "n", str stuffed.
  */
 
-static char	*ft_n_to_str(int n, char *str)
+static char	*ft_char(char *str, unsigned int n, long int len)
 {
-	if (n == -2147483648)
+	while (n > 0)
 	{
-		str = ft_str_negative();
-		str = ft_n_to_str (2147483, str);
-		str = ft_n_to_str (648, str);
-	}
-	else
-	{
-		if (n < 0)
-		{
-			str = ft_str_negative();
-			n = -n;
-		}
-		if (n >= 10)
-		{
-			str = ft_n_to_str ((n / 10), str);
-		}
-		if (n == 0)
-			str = ft_add_char (str, '0');
-		else
-			str = ft_add_char (str, (n % 10) + '0');
+		str[len--] = '0' + (n % 10);
+		n = n / 10;
 	}
 	return (str);
 }
 
+static char	*ft_2147483648(void)
+{
+	char	*s;
+
+	s = (char *)malloc(12);
+	if (!(s))
+		return (NULL);
+	s[0] = '-';
+	s[1] = '2';
+	s[2] = '1';
+	s[3] = '4';
+	s[4] = '7';
+	s[5] = '4';
+	s[6] = '8';
+	s[7] = '3';
+	s[8] = '6';
+	s[9] = '4';
+	s[10] = '8';
+	s[11] = '\0';
+	return (s);
+}
+
 char	*ft_itoa(int n)
 {
-	char	*str;
+	char	*s;
+	int		len;
 
-	str = 0;
-	if (!n || n == -0)
-		return (ft_n_to_str(0, str));
-	return (ft_n_to_str(n, str));
+	if (n == -2147483648)
+	{
+		s = ft_2147483648();
+		return (s);
+	}
+	len = ft_n_len(n);
+	s = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s)
+		return (NULL);
+	s[len--] = '\0';
+	if (n == 0)
+		s[0] = '0';
+	if (n < 0)
+	{
+		n = -n;
+		s[0] = '-';
+		s = ft_char(s, n, len);
+	}
+	else
+		s = ft_char(s, n, len);
+	return (s);
 }
 /*
 void    check_leaks(void)
@@ -125,21 +113,14 @@ void    check_leaks(void)
 }
 int main (void)
 {
-	//char *r ="123";
-	//char *r ="";printf("\n %s", ft_itoa(-2147483648));
-	//char *r = 0;
-	//char c = '4';
-        char *str;
-        str = 0;
-    //printf("\n %s", ft_str_negative());
-	//printf("\n %s", ft_add_char(r, c));
-	//printf("\n %s", ft_n_to_str (15, str));
-	//printf("\n %s", ft_itoa(-4));
-	//printf("\n %s", ft_itoa(-2147483648));
-        //printf("\n %s", ft_itoa(-0));
-        str = ft_itoa(2147483647);
+    char *str;
+    //str = ft_itoa(0);
+	//str = ft_itoa(-0);
+	//str = ft_itoa(-2);
+    str = ft_itoa(2147483647);
+	//str = ft_itoa(-2147483648);
 	printf("\n %s",str);
-        free(str);
-        atexit(check_leaks);
+    free(str);
+    atexit(check_leaks);
 	return(0);
 }*/
