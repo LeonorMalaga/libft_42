@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/03 19:50:11 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/06 14:29:32 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
-
+/*****************************************************************************/
+/*                                STRUCT                                     */
+/*****************************************************************************/
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+/*****************************************************************************/
+/*                       CHECKS-COUNTERS-UTILITIES			                 */
+/*****************************************************************************/
 /**
  * @brief return the length of the given string
  * 
@@ -30,30 +35,6 @@ typedef struct s_list
  * @return ** unsigned int to can used in other functions
  */
 unsigned int	ft_strlen(const char *str);
-/**
- * @brief if dstsize is not 0, ft_strlcpy() copies up to (dstsize - 1) characters
- *  from the string src to dst, adding a NUL-terminating.
- * 
- * @param dst It is necesarry declare it with malloc before passing 
- * it to the function.
- * @param src It is necesarry declare it with malloc before passing 
- * it to the function.
- * @param dstsize if "dstsize = 0" the fun
- * @return ** unsigned int,  always the length of src.
- */
-unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
-/**
- * @brief strlcat() appends string src to the end of dst. 
- * appends (dstsize - 1 - dst_length) characters
- * 
- * @param dst this chain will be modified
- * @param src this string will be appended to the end of the dst string.
- * @param dstsize has to be > dst_length to append somthing
- * @return ** unsigned if (!dst || dstsize <= dst_length)-> dstsize + src_length
- * without append nothing
- * else append and return (dst_length + src_length) 
- */
-unsigned int	ft_strlcat(char *dst, const char *src, unsigned int dstsize);
 /**
  * @brief  The ft_isalpha(int) function return 1 if the given character is
  * a letter no matter if is upper o lower case.
@@ -96,6 +77,19 @@ int				ft_isprint(int c);
  */
 int				ft_isascii(int c);
 /**
+ * @brief ft_atoi returns the number with it sing, If "str" starts 
+ * with X spaces following by a  + o -  plus a number plus some letters, 
+ * If "str" starts with more than one + or -, this function returns 0
+ * 
+ * @param str if "str" doesn't exist (is 0 or NULL)
+ *  the function cause a :!! segmenttion fault !!.
+ * @return int  The number that appears at the beginnig of "str".
+ */
+int				ft_atoi(char *str);
+/*****************************************************************************/
+/*                       CHANGE OR LOCATE A CHARACTER                        */
+/*****************************************************************************/
+/**
  * @brief  The toupper() function converts a lower-case letter 
  * to the corresponding upper-caseletter
  * 
@@ -111,6 +105,56 @@ int				ft_toupper(int c);
  * @return ** int the ascii integer value of the lower case char
  */
 int				ft_tolower(int c);
+/**
+ * @brief 	The strchr(*s,c) function locates the FIRST occurrence of "c"
+ * in the string "s";
+ * 
+ * @param s a string of characters.if "s" doesn't exist (is 0 or NULL)
+ *  the function cause a: !! segmenttion fault !!.
+ * @param c int the ascii integer value of the char to locate. 
+ * @return a char* pointer to the first (char)c int *s, 
+ * if (char)c is not present in *s, return 0.
+ */
+char			*ft_strchr(const char *s, int c);
+/**
+ * @brief "ft_strrchr" return a (char *)pointer to the 
+ *           LAST ocurrence    of (char)c.
+ * 
+ * @param s a string of characters.if "s" doesn't exist (is 0 or NULL)
+ *  the function cause a: !! segmenttion fault !!.
+ * @param c int the ascii integer value of the char to locate.
+ * @return  "ft_strrchr" return a (char *)pointer to the 
+ *           LAST ocurrence    of (char)c.
+ */
+char			*ft_strrchr(const char *s, int c);
+/**
+ * @brief the function "ft_memchr(*s,c,n)" looks int the first "n" characters 
+ * of the string "s" the character "c"
+ * 
+ * @param s we castted it to (char *). if "s" doesn't exist (is 0 or NULL)
+ *  the function cause a: !! segmenttion fault !!.
+ * @param c int the ascii integer value of the char to locate.
+ * @param n If 0 the function returns 0.
+ * @return void* a pointer to the first ocurrence of the character 'c'
+ *  in the string 's'.
+ */
+void			*ft_memchr(const void *s, int c, unsigned int n);
+/**
+ * @brief  look for a different character between s1 and s2 as long as the 
+ * strings don't end and along (n-1) positions.
+ * 
+ * @param s1 a string of characters.if "s1" doesn't exist (is 0 or NULL)
+ *  the function cause a: !! segmenttion fault !!.
+ * @param s2 a string of characters.if "s2" doesn't exist (is 0 or NULL)
+ *  the function cause a: !! segmenttion fault !!.
+ * @param n if n == 0, return 0.
+ * @return ((unsigned char)s1[i] - (unsigned char)s2[i]) of the first different
+ * couple of characters.
+ */
+int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
+/*****************************************************************************/
+/*                      CHANGE OR LOCATE A STRINGS                           */
+/*****************************************************************************/
 /**
  * @brief The function ft_menset writes len bytes of value c
  * (converted to an unsigned char) to the string b.
@@ -135,6 +179,31 @@ void			*ft_memset(void *b, int c, unsigned int len);
  * @return ** void 
  */
 void			ft_bzero(void *s, unsigned int len);
+/**
+ *  @brief if "dstsize" is not 0, "ft_strlcpy()"" copies up to (dstsize - 1)
+ * characters from the string src to dst, adding a NUL-terminating.
+ * 
+ * @param dst It is necesarry declare it with malloc before passing 
+ * it to the function.
+ * @param src It is necesarry declare it with malloc before passing 
+ * it to the function.
+ * @param dstsize if "dstsize = 0" the fun
+ * @return ** unsigned int,  always the length of src.
+ */
+unsigned int	ft_strlcpy(char *dst, const char *src, unsigned int dstsize);
+/**
+ * @brief strlcat() appends string src to the end of dst. 
+ * appends (dstsize - 1 - dst_length) characters
+ * 
+ * @param dst this chain will be modified
+ * @param src this string will be appended to the end of the dst string.
+ * @param dstsize has to be > dst_length to append somthing
+ * @return ** unsigned if (!dst || dstsize <= dst_length)-> dstsize + src_length
+ * without append nothing
+ * else append and return (dst_length + src_length) 
+ */
+unsigned int	ft_strlcat(char *dst, const char *src, unsigned int dstsize);
+
 /**
  * @brief The ft_memcpy() function copies n bytes from memory area "src"
  *  to memory area "dst" for that we caste them to (char *). If the memory 
@@ -166,55 +235,7 @@ void			*ft_memcpy(void *dst, const void *src, unsigned int n);
  *  same memory location returns dst without doing anything else.
  */
 void			*ft_memmove(void *dst, const void *src, unsigned int n);
-/**
- * @brief 	The strchr(*s,c) function locates the FIRST occurrence of "c"
- * in the string "s";
- * 
- * @param s a string of characters.if "s" doesn't exist (is 0 or NULL)
- *  the function cause a: !! segmenttion fault !!.
- * @param c int the ascii integer value of the char to locate. 
- * @return a char* pointer to the first (char)c int *s, 
- * if (char)c is not present in *s, return 0.
- */
-char			*ft_strchr(const char *s, int c);
-/**
- * @brief i = ft_strlen((char *) s);while (i >= 0)
-	{   if (s[i] == (char)c) return ((char *)(s + i));
-		i--;
-	}
- * 
- * @param s a string of characters.if "s" doesn't exist (is 0 or NULL)
- *  the function cause a: !! segmenttion fault !!.
- * @param c int the ascii integer value of the char to locate.
- * @return  "ft_strrchr" return a (char *)pointer to the 
- *           LAST ocurrence    of (char)c.
- */
-char			*ft_strrchr(const char *s, int c);
-/**
- * @brief  look for a different character between s1 and s2 as long as the 
- * strings don't end and along (n-1) positions.
- * 
- * @param s1 a string of characters.if "s1" doesn't exist (is 0 or NULL)
- *  the function cause a: !! segmenttion fault !!.
- * @param s2 a string of characters.if "s2" doesn't exist (is 0 or NULL)
- *  the function cause a: !! segmenttion fault !!.
- * @param n if n == 0, return 0.
- * @return ((unsigned char)s1[i] - (unsigned char)s2[i]) of the first different
- * couple of characters.
- */
-int				ft_strncmp(const char *s1, const char *s2, unsigned int n);
-/**
- * @brief the function "ft_memchr(*s,c,n)" looks int the first "n" characters 
- * of the string "s" the character "c"
- * 
- * @param s we castted it to (char *). if "s" doesn't exist (is 0 or NULL)
- *  the function cause a: !! segmenttion fault !!.
- * @param c int the ascii integer value of the char to locate.
- * @param n If 0 the function returns 0.
- * @return void* a pointer to the first ocurrence of the character 'c'
- *  in the string 's'.
- */
-void			*ft_memchr(const void *s, int c, unsigned int n);
+
 /**
  * @brief The ft_memcmp() function compares the first
  *  "n" (unsigned char *) of "s1" with the first "n" (unsigned char *) 
@@ -247,16 +268,10 @@ int				ft_memcmp(const void *s1, const void *s2, unsigned int n);
  */
 char			*ft_strnstr(const char *haystack, const char *needle,
 					unsigned int len);
-/**
- * @brief If "str" starts with X spaces following by a  + o -  plus 
- * a number plus some letters, this function returns the number with it sing.
- * If "str" starts with more than one + or -, this function returns 0
- * 
- * @param str if "str" doesn't exist (is 0 or NULL)
- *  the function cause a :!! segmenttion fault !!.
- * @return int 
- */
-int				ft_atoi(char *str);
+/*****************************************************************************/
+/*                      ALLOCATE NEW MEMORY                                  */
+/*****************************************************************************/
+
 void			*ft_calloc(unsigned int count, unsigned int size);
 /**
  * @brief ft_strdup() allocates memory for a copy of "s1" and returns the pointer
@@ -326,6 +341,7 @@ char			**ft_split(char const *s, char c);
  * @return char* the new string
  */
 char			*ft_itoa(int n);
+
 /**
  * @brief Applies the function ’f’ to each character of the
  * string ’s’, and passing its index as first argument
@@ -338,16 +354,10 @@ char			*ft_itoa(int n);
  * of "s" by "f". 
  */
 char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-/**
- * @brief Applies the function ’f’ to each character of the
- * string ’s’ passed as argument, passing its index as first argument.
- * Each character is passed by address to ’f’ to modify "s" if "f" 
- * has that purpose.
- * 
- * @param s A string. If s == NULL return 0.
- * @param f The function with header: "void ft_name (unsigned int n, char *c);"" 
- */
-void			ft_striteri(char *s, void (*f)(unsigned int, char*));
+
+/*****************************************************************************/
+/*                     WORKS WITH FILES DESCRIPTORS                          */
+/*****************************************************************************/
 /**
  * @brief Write a character in the first position of the opened file 
  * descriptor "fd", if we call the function without closing the file descriptor
@@ -384,5 +394,20 @@ void			ft_putendl_fd(char *s, int fd);
  * @param fd The file descriptor on which to write.
  */
 void			ft_putnbr_fd(int n, int fd);
+/*****************************************************************************/
+/*                   WORKS WITH FUNCTIONS AND LIST                           */
+/*****************************************************************************/
+
+/**
+ * @brief Applies the function ’f’ to each character of the
+ * string ’s’ passed as argument, passing its index as first argument.
+ * Each character is passed by address to ’f’ to modify "s" if "f" 
+ * has that purpose.
+ * 
+ * @param s A string. If s == NULL return 0.
+ * @param f The function with header: "void ft_name (unsigned int n, char *c);"" 
+ */
+void			ft_striteri(char *s, void (*f)(unsigned int, char*));
+
 t_list			*ft_lstnew(void *content);
 #endif

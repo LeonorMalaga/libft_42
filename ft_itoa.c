@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 14:13:49 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/01 18:09:31 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/06 09:56:43 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static char	*ft_2147483648(void)
 	char	*s;
 
 	s = (char *)malloc(12);
-	if (!(s))
+	if (!s)
 		return (NULL);
 	s[0] = '-';
 	s[1] = '2';
