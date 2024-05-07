@@ -6,12 +6,17 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:23:22 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/03 19:48:11 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/06 15:02:29 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/*typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;*/
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;

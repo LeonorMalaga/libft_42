@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/06 14:29:32 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/07 15:00:24 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
-/*****************************************************************************/
-/*                                STRUCT                                     */
-/*****************************************************************************/
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
+
 /*****************************************************************************/
 /*                       CHECKS-COUNTERS-UTILITIES			                 */
 /*****************************************************************************/
@@ -394,12 +387,21 @@ void			ft_putendl_fd(char *s, int fd);
  * @param fd The file descriptor on which to write.
  */
 void			ft_putnbr_fd(int n, int fd);
+
+/*****************************************************************************/
+/*                                STRUCT                                     */
+/*****************************************************************************/
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 /*****************************************************************************/
 /*                   WORKS WITH FUNCTIONS AND LIST                           */
 /*****************************************************************************/
-
 /**
- * @brief Applies the function ’f’ to each character of the
+ * @brief The function "ft_striteri()" applies the function ’f’ to each character of the
  * string ’s’ passed as argument, passing its index as first argument.
  * Each character is passed by address to ’f’ to modify "s" if "f" 
  * has that purpose.
@@ -408,6 +410,30 @@ void			ft_putnbr_fd(int n, int fd);
  * @param f The function with header: "void ft_name (unsigned int n, char *c);"" 
  */
 void			ft_striteri(char *s, void (*f)(unsigned int, char*));
-
+/**
+ * @brief The function "ft_lstnew()" allocate memory for a "t_list" object.
+ * The member variable ’content’ is initialized with
+ * the value of the parameter ’content’. The variable
+ * ’next’ is initialized to NULL (new->next = 0;).
+ * 
+ * @param content could be any type of data.(new->content = content;)
+ * @return t_list* new; a pointer to a "ft_list" struct. 
+ */
 t_list			*ft_lstnew(void *content);
+/**
+ * @brief The function "ft_lstadd_front()" add a node to he begining of a list
+ * t_list *node1 = ft_lstnew(1);
+ * t_list *node2 = ft_lstnew(2);
+ * ft_lstadd_front(&node1,node2);
+ * @param lst A pointer to the content of the first node of a list. 
+ * @param new The new node of the list to add
+ */
+void			ft_lstadd_front(t_list **lst, t_list *new);
+/**
+ * @brief 
+ * 
+ * @param lst 
+ * @return int 
+ */
+int				ft_lstsize(t_list *lst);
 #endif
