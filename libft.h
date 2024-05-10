@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/07 15:00:24 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/10 15:30:32 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,10 +401,10 @@ typedef struct s_list
 /*                   WORKS WITH FUNCTIONS AND LIST                           */
 /*****************************************************************************/
 /**
- * @brief The function "ft_striteri()" applies the function ’f’ to each character of the
- * string ’s’ passed as argument, passing its index as first argument.
- * Each character is passed by address to ’f’ to modify "s" if "f" 
- * has that purpose.
+ * @brief The function "ft_striteri()" applies the function ’f’ to each 
+ * character of the string ’s’ passed as argument, passing its index 
+ * as first argument.Each character is passed by address to ’f’ to modify "s"
+ *  if "f" has that purpose.
  * 
  * @param s A string. If s == NULL return 0.
  * @param f The function with header: "void ft_name (unsigned int n, char *c);"" 
@@ -430,10 +430,17 @@ t_list			*ft_lstnew(void *content);
  */
 void			ft_lstadd_front(t_list **lst, t_list *new);
 /**
- * @brief 
+ * @brief Counts the number of nodes in a list.
  * 
- * @param lst 
- * @return int 
+ * @param lst The beginning of the list.
+ * @return int The length of the list
  */
 int				ft_lstsize(t_list *lst);
+/**
+ * @brief Returns the last node of the list.
+ * 
+ * @param lst  The beginning of the list.
+ * @return t_list* Last node of the list
+ */
+t_list			*ft_lstlast(t_list *lst);
 #endif
