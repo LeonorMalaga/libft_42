@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/10 15:30:32 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/13 15:03:28 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -443,4 +443,15 @@ int				ft_lstsize(t_list *lst);
  * @return t_list* Last node of the list
  */
 t_list			*ft_lstlast(t_list *lst);
+/**
+ * @brief Add a new elemen to the ende of the list but
+ * If the content of new is NULL we don't do anything
+ * or If(*lst) is NULL -> *lst = new;
+ * 
+ * @param lst  The address of a pointer to the first link of
+a list.
+ * @param new  The address of a pointer to the node to be
+added to the list.
+ */
+void			ft_lstadd_back(t_list **lst, t_list *new);
 #endif
