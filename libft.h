@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/13 15:03:28 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:46:35 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -454,4 +454,13 @@ a list.
 added to the list.
  */
 void			ft_lstadd_back(t_list **lst, t_list *new);
+/**
+ * @brief Free a pointer to a list node and the contents to this node.
+ * But the node still exists linked by the previos node and pointed to it next.
+ * 
+ * @param lst A pointer to the node.
+ * @param del A function to delete the content of the node.
+ */
+void			ft_lstdelone(t_list *lst, void (*del)(void *));
+
 #endif
