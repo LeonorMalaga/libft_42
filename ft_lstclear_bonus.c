@@ -1,28 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 13:34:10 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/14 19:15:45 by leonmart         ###   ########.fr       */
+/*   Created: 2024/05/14 16:53:13 by leonmart          #+#    #+#             */
+/*   Updated: 2024/05/14 19:17:25 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (lst && del)
+	t_list	*p;
+
+	p = *lst;
+	while (*lst)
 	{
-		del(lst -> content);
-		free(lst);
-		lst = 0;
+		p = p->next;
+		ft_lstdelone(*lst, del);
+		*lst = p;
+	}
+	lst = 0;
+}
+/*
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list *ml;
+	t_list *tmp;
+
+	ml = 0;
+	tmp = 0;
+	if(lst && *lst && del)
+	{
+		ml = *lst;		
+		if(ml->next == NULL && ml->content)
+		 ft_lstdelone(*lst,del);
+
+		while(*lst && ml->content && ml->next)
+		{
+            tmp = ml->next;
+            ft_lstdelone(*lst,del);
+			*lst = tmp;			
+		}
 	}
 }
 
-/*
 void del_string (void *s)
 {
   if(s)
@@ -41,7 +66,7 @@ static void ft_print_list(t_list *lst)
     while (lst)
     {
 		printf("nodo: %d, contenido: %s\n",node, lst->content);
-        lst = lst->next;
+       	lst = lst->next;
 		node ++;
     }
 }
@@ -74,8 +99,10 @@ int main (void)
 	ft_print_list(new);
 	ft_lstadd_back(&new, new3);
 	ft_print_list(new);
-	ft_lstdelone(new2,del_string);
+	ft_lstclear(&new2,del_string);
 	ft_print_list(new);
+	if(!new2)
+		write(1,"OK",3);
 
 	return(0);
 }*/

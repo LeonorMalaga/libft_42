@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/14 16:46:35 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/14 19:22:45 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -462,5 +462,15 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
  * @param del A function to delete the content of the node.
  */
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
+/**
+ * @brief Frees all nodes in a list from the given node up to the 
+ * end of the list, including the specified node, but the prebios node
+ * now has a pointer to a free space of memory, so if you try to 
+ * go throught the complete list, you will get a segmentation fault.
+ * 
+ * @param lst the memory direction to a  pointer to the node.
+ * @param del A function to delete the content of the node.
+ */
+void			ft_lstclear(t_list **lst, void (*del)(void *));
 
 #endif
