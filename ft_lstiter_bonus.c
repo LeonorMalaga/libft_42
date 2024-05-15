@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leonor <leonor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 16:53:13 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/15 06:29:52 by leonor           ###   ########.fr       */
+/*   Created: 2024/05/15 06:46:07 by leonor            #+#    #+#             */
+/*   Updated: 2024/05/15 07:02:34 by leonor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	t_list	*aux;
-
-	aux = *lst;
-	while (*lst)
+	while (lst)
 	{
-		aux = aux->next;
-		ft_lstdelone(*lst, del);
-		*lst = aux;
+		if (lst && f)
+		{
+			f(lst->content);
+			lst = lst->next;
+		}
 	}
 }
 /*
@@ -90,7 +89,7 @@ int main (void)
 	leng = ft_lstsize(new);
 	c = leng + '0';
 	write(1,&c,1);
-	ft_lstclear(&new2,del_string);
+	ft_lstiter(new2,del_string);
 	write(1,"\n",1);
 	leng = ft_lstsize(new);
 	c = leng + '0';

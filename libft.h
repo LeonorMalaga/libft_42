@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
+/*   By: leonor <leonor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/14 19:22:45 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/15 06:53:36 by leonor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -463,14 +463,20 @@ void			ft_lstadd_back(t_list **lst, t_list *new);
  */
 void			ft_lstdelone(t_list *lst, void (*del)(void *));
 /**
- * @brief Frees all nodes in a list from the given node up to the 
- * end of the list, including the specified node, but the prebios node
- * now has a pointer to a free space of memory, so if you try to 
- * go throught the complete list, you will get a segmentation fault.
+ * @brief Frees the content of all nodes from the given one, 
+ * keeping the next pointers. The list maintains the same number of nodes.
  * 
  * @param lst the memory direction to a  pointer to the node.
  * @param del A function to delete the content of the node.
  */
 void			ft_lstclear(t_list **lst, void (*del)(void *));
+/**
+ * @brief Iterates the list ’lst’ and applies the function
+ *’f’ on the content of each node.
+ * 
+ * @param lst The address of a pointer to a node.
+ * @param del A function to interact with the content of the node.
+ */
+void			ft_lstiter(t_list *lst, void (*f)(void *));
 
 #endif
