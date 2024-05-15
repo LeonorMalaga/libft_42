@@ -6,40 +6,62 @@
 /*   By: leonor <leonor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 07:06:06 by leonor            #+#    #+#             */
-/*   Updated: 2024/05/15 08:22:03 by leonor           ###   ########.fr       */
+/*   Updated: 2024/05/15 09:15:40 by leonor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void*(*del)(void *))
+t_list	*ft_lstcpy(t_list *lst,void*(*del)(void *))
 {
 	t_list	*new_lst;
 	t_list	*new_node;
-	int leng;
+	int i;
 	void *new_content;
 
 	new_lst = 0;
-	new_node = 0;
-	new_content = 0;
-	leng = 0;
 
-	if(lst && f)
+	i = 0;
+	if (lst && del)
 	{
 		while (lst)
 		{
-			leng = ft_strlen((char *)lst->content);
-			new_content = ft_calloc(1, leng);
-			if(!new_content)
+			new_content = ft_strdup(lst->content);
+			if (!new_content)
+			{
 				free(new_content);
 				new_content = 0;
+			}	
 			new_node = ft_lstnew(&new_content);
-			if(!new_node)
-				ft_lstdelone()
-			lst = lst->next;
+			if (i==0)
+			{
+				if(!new_node)
+				   ft_lstdelone(new_node, del);				  
+				new_lst = new_node;
+			}
+			else if (i > 0)
+			{
+				if(!new_node)
+				    ft_lstclear(&new_lst, del);
+				ft_lstadd_back(&new_lst, new_content);
+			}
+			i++;
 		}
 	}
-return(new_lst);
+	return(new_lst);
+}
+
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void*(*del)(void *))
+{
+	t_list	*new_lst;
+	if(lst && del && f )
+	{
+      new_lst = ft_lstcpy(lst,del);
+	  ft_lstiter(new_lst, f);
+	}
+	new_lst = 0;
+
+	return(new_lst);	
 }
 void change_string (void *s)
 {
@@ -69,6 +91,14 @@ static void ft_print_list(t_list *lst)
 			c = 0;
 		node ++;
     }
+}
+void del_string (void *s)
+{
+  if(s)
+  {
+   free(s);
+   s = 0;
+  }
 }
 
 int main (void)
