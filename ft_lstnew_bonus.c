@@ -6,26 +6,21 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 19:23:22 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/06 15:02:29 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/15 14:39:29 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;*/
 t_list	*ft_lstnew(void *content)
 {
 	t_list	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = malloc(sizeof(t_list));
 	if (!new)
-		return (0);
+		return (NULL);
 	new->content = content;
-	new->next = 0;
+	new->next = NULL;
 	return (new);
 }
 /*

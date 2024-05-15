@@ -6,4 +6,5 @@ a.out.dSYM
 *.a
 a.out
 main.c
+.vscode
 .gitignore

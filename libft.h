@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: leonor <leonor@student.42.fr>              +#+  +:+       +#+        */
+/*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:38:03 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/15 06:53:36 by leonor           ###   ########.fr       */
+/*   Updated: 2024/05/15 13:06:26 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -478,5 +478,18 @@ void			ft_lstclear(t_list **lst, void (*del)(void *));
  * @param del A function to interact with the content of the node.
  */
 void			ft_lstiter(t_list *lst, void (*f)(void *));
+/**
+ * @brief Allocates memory for a new list ,which is going to contain at each node
+ *  the result of applying the function ’f’ to each node of lst.
+ * 
+ * @param lst The list from which the contents is taken.
+ * @param f A function that returns a (void *) pointer and recives the contents 
+ * of a node
+ * @param del The address of the function used to delete
+ * the content of a node.
+ * @return t_list* a New list. NULL if the allocation fails.
+ */
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *),
+					void (*del)(void *));
 
 #endif

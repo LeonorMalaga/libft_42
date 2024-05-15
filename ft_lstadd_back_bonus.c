@@ -6,7 +6,7 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 13:10:33 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/13 14:56:06 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/15 13:57:41 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 /*
+
 static void ft_print_list(t_list *lst)
 {
 	int node;
@@ -62,4 +63,5 @@ int main (void)
 	ft_print_list(new5);
 
 	return(0);
-}*/
+} 
+*/
