@@ -1,29 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leonor <leonor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/15 06:46:07 by leonor            #+#    #+#             */
-/*   Updated: 2024/05/15 08:20:53 by leonor           ###   ########.fr       */
+/*   Created: 2024/05/15 07:06:06 by leonor            #+#    #+#             */
+/*   Updated: 2024/05/15 08:22:03 by leonor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *),void*(*del)(void *))
 {
-	while (lst)
+	t_list	*new_lst;
+	t_list	*new_node;
+	int leng;
+	void *new_content;
+
+	new_lst = 0;
+	new_node = 0;
+	new_content = 0;
+	leng = 0;
+
+	if(lst && f)
 	{
-		if (lst && f)
+		while (lst)
 		{
-			f(lst->content);
+			leng = ft_strlen((char *)lst->content);
+			new_content = ft_calloc(1, leng);
+			if(!new_content)
+				free(new_content);
+				new_content = 0;
+			new_node = ft_lstnew(&new_content);
+			if(!new_node)
+				ft_lstdelone()
 			lst = lst->next;
 		}
 	}
+return(new_lst);
 }
-/*
 void change_string (void *s)
 {
    char *c;
@@ -88,4 +105,5 @@ int main (void)
 		write(1,"OK",3);
 
 	return(0);
-}*/
+}
+
