@@ -6,16 +6,12 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 14:34:18 by leonmart          #+#    #+#             */
-/*   Updated: 2024/05/07 13:59:09 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/16 12:24:36 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;*/
+
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
 	if (!lst || !new)
