@@ -6,48 +6,48 @@
 /*   By: leonmart <leonmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 07:06:06 by leonor            #+#    #+#             */
-/*   Updated: 2024/05/15 15:13:16 by leonmart         ###   ########.fr       */
+/*   Updated: 2024/05/16 11:39:50 by leonmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static t_list	*ft_lstmap_while(t_list *lst2,void *new_content, void (*del)(void *))
+static	t_list	*ft_lstmap_while(t_list *lst2, void *new_content
+, void (*del)(void *))
 {
-		t_list	*node2;
+	t_list	*node2;
 
-		node2 = ft_lstnew(new_content);
-        if (!node2)
-        {
-            del(new_content);	
-            ft_lstclear(&lst2, del);
-            return (NULL);
-        }
-        ft_lstadd_back(&lst2, node2);
-        
-		return (lst2);
+	node2 = ft_lstnew(new_content);
+	if (!node2)
+	{
+		del(new_content);
+		ft_lstclear(&lst2, del);
+		return (0);
+	}
+	ft_lstadd_back(&lst2, node2);
+	return (lst2);
 }
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    t_list	*lst2;
-   
-    void	*new_content;
+	t_list	*lst2;
+	void	*new_content;
 
-    if (!lst || !f)
-        return (NULL);
-    lst2 = NULL;
-    while (lst)
-    {
+	lst2 = 0;
+	if (!lst || !f)
+		return (0);
+	while (lst)
+	{
 		new_content = f(lst->content);
-	  	if (!new_content)
+		if (!new_content)
 		{
 			ft_lstclear(&lst2, del);
-			return (NULL);
-		}	
-		lst2= ft_lstmap_while(lst2,new_content, del);
+			return (0);
+		}
+		lst2 = ft_lstmap_while (lst2, new_content, del);
 		lst = lst->next;
-    }
-    return (lst2);
+	}
+	return (lst2);
 }
 
 /*
